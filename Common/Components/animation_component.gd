@@ -4,13 +4,16 @@ extends Node
 @export var movement_component: MovementComponent
 @export var animation_player: AnimationPlayer
 
+var current_animation: String = "RESET"
+
 func update_animation() -> void:
 	if not movement_component.movement_changed():
 		return
 
 	var animation_name: String = get_animation_for_movement(movement_component.movement)
-	if animation_name and animation_player.current_animation != animation_name:
+	if current_animation != animation_name:
 		animation_player.play(animation_name)
+		current_animation = animation_name
 
 func get_animation_for_movement(movement: Vector2) -> String:
 	var animation_name: String

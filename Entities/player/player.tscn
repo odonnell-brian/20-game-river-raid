@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://1eag3rdh1g7n"]
+[gd_scene load_steps=15 format=3 uid="uid://1eag3rdh1g7n"]
 
 [ext_resource type="Script" uid="uid://d1lpfj256pd1m" path="res://Entities/player/player.gd" id="1_m0gmf"]
 [ext_resource type="Texture2D" uid="uid://4785eyc08rok" path="res://Entities/player/assets/playerShip1_blue.png" id="1_qjpfe"]
+[ext_resource type="Texture2D" uid="uid://cn8tbrmsbra3v" path="res://Entities/player/assets/fire16.png" id="2_nqdw5"]
+[ext_resource type="Texture2D" uid="uid://cug7jg6bjdhst" path="res://Entities/player/assets/fire15.png" id="3_3we0j"]
 [ext_resource type="PackedScene" uid="uid://dehvl3160x1na" path="res://Common/Components/animation_component.tscn" id="3_nqdw5"]
 [ext_resource type="PackedScene" uid="uid://df6bm56esesti" path="res://Common/Components/movement_component.tscn" id="4_3we0j"]
+[ext_resource type="PackedScene" uid="uid://kkmrqkejd5ym" path="res://Common/Components/acceleration_component.tscn" id="7_vso2a"]
+[ext_resource type="PackedScene" uid="uid://pl6vbxv0dhn3" path="res://Common/Components/gun_component.tscn" id="8_kyxaw"]
+[ext_resource type="PackedScene" uid="uid://6vucxb020b3v" path="res://Entities/laser/laser.tscn" id="9_twsei"]
 
 [sub_resource type="Animation" id="Animation_m0gmf"]
 length = 0.2
@@ -31,6 +36,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 2,
 "values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3we0j"]
+resource_name = "speed_up"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fire4:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_q6ntu"]
@@ -92,15 +125,34 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q6ntu"]
 _data = {
 &"RESET": SubResource("Animation_m0gmf"),
+&"speed_up": SubResource("Animation_3we0j"),
 &"turn_left": SubResource("Animation_q6ntu"),
 &"turn_right": SubResource("Animation_qjpfe")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_component", "movement_component")]
-scale = Vector2(0.65, 0.65)
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_component", "movement_component", "acceleration_component")]
 script = ExtResource("1_m0gmf")
 animation_component = NodePath("AnimationComponent")
 movement_component = NodePath("MovementComponent")
+acceleration_component = NodePath("AccelerationComponent")
+
+[node name="Fire" type="Sprite2D" parent="."]
+position = Vector2(23, 37)
+texture = ExtResource("2_nqdw5")
+
+[node name="Fire2" type="Sprite2D" parent="."]
+position = Vector2(-23, 37)
+texture = ExtResource("2_nqdw5")
+
+[node name="Fire3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-23, 37)
+texture = ExtResource("3_3we0j")
+
+[node name="Fire4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(23, 37)
+texture = ExtResource("3_3we0j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qjpfe")
@@ -118,3 +170,18 @@ movement_component = NodePath("../MovementComponent")
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_3we0j")]
+
+[node name="AccelerationComponent" parent="." node_paths=PackedStringArray("movement_component", "sprites_to_fade") instance=ExtResource("7_vso2a")]
+movement_component = NodePath("../MovementComponent")
+sprites_to_fade = [NodePath("../Fire3"), NodePath("../Fire4")]
+
+[node name="GunComponent" parent="." node_paths=PackedStringArray("projectile_spawn_marker", "cooldown_timer") instance=ExtResource("8_kyxaw")]
+projectile_spawn_marker = NodePath("Marker2D")
+projectile_entity = ExtResource("9_twsei")
+cooldown_timer = NodePath("Timer")
+
+[node name="Marker2D" type="Marker2D" parent="GunComponent"]
+position = Vector2(0, -45)
+
+[node name="Timer" type="Timer" parent="GunComponent"]
+wait_time = 0.5

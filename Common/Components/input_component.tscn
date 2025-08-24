@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://l0qradnk6lel"]
+[gd_scene load_steps=2 format=3 uid="uid://7vrgoxsmubgr"]
 
-[ext_resource type="Script" uid="uid://5ahux8t4kdkx" path="res://Common/Components/input_component.gd" id="1_ghq5c"]
+[sub_resource type="GDScript" id="GDScript_pdb5e"]
+script/source = "class_name InputComponent
+extends Node
+
+enum InputState {MOVE_LEFT, MOVE_RIGHT, ACCELERATE, DECELERATE, NONE}
+
+var current_state: InputState = InputState.NONE
+var previous_state: InputState = InputState.NONE
+
+func update_state() -> void:
+	previous_state = current_state
+	if not Input.is_anything_pressed():
+		current_state = InputState.NONE
+	elif Input.is_action_just_pressed(\"move_left\"):
+		current_state = InputState.MOVE_LEFT
+	elif Input.is_action_just_pressed(\"move_right\"):
+		current_state = InputState.MOVE_RIGHT
+
+func state_just_changed() -> bool:
+	return previous_state != current_state
+"
 
 [node name="InputComponent" type="Node"]
-script = ExtResource("1_ghq5c")
+script = SubResource("GDScript_pdb5e")

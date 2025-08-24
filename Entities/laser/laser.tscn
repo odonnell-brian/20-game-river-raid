@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://6vucxb020b3v"]
+
+[ext_resource type="Texture2D" uid="uid://cv6bgarxpkjeu" path="res://Entities/laser/assets/laserBlue04.png" id="1_iutlv"]
+[ext_resource type="PackedScene" uid="uid://ckwbw0c74p0n8" path="res://Common/Components/scroll_component.tscn" id="2_6mloo"]
+
+[node name="Laser" type="Node2D"]
+z_index = -1
+scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iutlv")
+
+[node name="ScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("2_6mloo")]
+node_to_move = NodePath("..")
+scroll_velocity = Vector2(0, -1000)
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="ScrollComponent"]
+z_index = -1
+scale = Vector2(1.33333, 2)
