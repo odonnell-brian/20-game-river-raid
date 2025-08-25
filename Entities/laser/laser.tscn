@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://6vucxb020b3v"]
+[gd_scene load_steps=7 format=3 uid="uid://6vucxb020b3v"]
 
 [ext_resource type="Texture2D" uid="uid://cv6bgarxpkjeu" path="res://Entities/laser/assets/laserBlue04.png" id="1_iutlv"]
 [ext_resource type="PackedScene" uid="uid://ckwbw0c74p0n8" path="res://Common/Components/scroll_component.tscn" id="2_6mloo"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="3_o3rua"]
+[ext_resource type="Script" uid="uid://do8c4wk8akhul" path="res://Common/Components/health_component.gd" id="4_lmm7o"]
+[ext_resource type="PackedScene" uid="uid://c25h3vsn263kc" path="res://Entities/laser/laser_explode.tscn" id="5_jnchk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmm7o"]
+radius = 6.66667
+height = 37.3333
 
 [node name="Laser" type="Node2D"]
 z_index = -1
@@ -17,4 +24,22 @@ visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="ScrollComponent"]
 z_index = -1
-scale = Vector2(1.33333, 2)
+position = Vector2(0, 10)
+scale = Vector2(1.33333, 3)
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_o3rua")]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+shape = SubResource("CapsuleShape2D_lmm7o")
+
+[node name="HealthComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("4_lmm7o")
+destroy_fx = ExtResource("5_jnchk")
+metadata/_custom_type_script = "uid://do8c4wk8akhul"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+shape = SubResource("CapsuleShape2D_lmm7o")

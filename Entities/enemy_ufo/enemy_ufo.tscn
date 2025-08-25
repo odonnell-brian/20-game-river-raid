@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://ca781ity51gru"]
+
+[ext_resource type="Texture2D" uid="uid://cm54pe4rn5fkx" path="res://Entities/enemy_ufo/assets/ufoRed.png" id="1_tooo2"]
+[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health_component.tscn" id="2_fd13w"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="3_33no7"]
+[ext_resource type="PackedScene" uid="uid://cu0b5uclr3cp1" path="res://Common/Components/score_component.tscn" id="4_twn3k"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="5_vh88p"]
+
+[sub_resource type="Animation" id="Animation_twn3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_33no7"]
+resource_name = "rotate"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vh88p"]
+_data = {
+&"RESET": SubResource("Animation_twn3k"),
+&"rotate": SubResource("Animation_33no7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_33no7"]
+radius = 45.156
+
+[node name="EnemyUfo" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tooo2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vh88p")
+}
+autoplay = "rotate"
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_fd13w")]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+shape = SubResource("CircleShape2D_33no7")
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_33no7")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+shape = SubResource("CircleShape2D_33no7")
+
+[node name="ScoreComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_twn3k")]
+health_component = NodePath("../HealthComponent")
+score_amount = 50
+
+[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("5_vh88p")]
+node_to_move = NodePath("..")
+scroll_velocity = Vector2(0, 50)
+screen_exit_behavior = 2
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelEntityScrollComponent"]
+position = Vector2(-0.499979, -0.624998)
+scale = Vector2(3.45, 7.5625)

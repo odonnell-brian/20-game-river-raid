@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ix8bok87mxr"]
+
+[ext_resource type="Script" uid="uid://bf38jnhk606ti" path="res://Common/Components/destroy_timer.gd" id="1_q51t2"]
+
+[node name="DestroyTimer" type="Node2D"]
+script = ExtResource("1_q51t2")
+
+[node name="Timer" type="Timer" parent="."]

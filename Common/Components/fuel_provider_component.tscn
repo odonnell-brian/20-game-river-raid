@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://48y5sqwbpr6h"]
+
+[ext_resource type="Script" uid="uid://bhvea0orv4dxk" path="res://Common/Components/fuel_provider_component.gd" id="1_ahgvm"]
+
+[node name="FuelProviderComponent" type="Area2D"]
+script = ExtResource("1_ahgvm")
