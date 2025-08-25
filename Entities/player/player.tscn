@@ -144,13 +144,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5udp2"]
 size = Vector2(20, 57)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_component", "movement_component", "acceleration_component", "health_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_component", "movement_component", "acceleration_component", "health_component", "fuel_component")]
 z_index = 1
 script = ExtResource("1_m0gmf")
 animation_component = NodePath("AnimationComponent")
 movement_component = NodePath("MovementComponent")
 acceleration_component = NodePath("AccelerationComponent")
 health_component = NodePath("HealthComponent")
+fuel_component = NodePath("FuelComponent")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -221,7 +222,8 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageComponent"]
 polygon = PackedVector2Array(-9, -38, 10, -38, 15, -14, 51, -7, 48, 25, 9, 39, -8, 39, -48, 27, -51, -8, -14, -14)
 
-[node name="FuelComponent" parent="." instance=ExtResource("12_v3hes")]
+[node name="FuelComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_v3hes")]
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FuelComponent"]
 position = Vector2(0, 3.5)

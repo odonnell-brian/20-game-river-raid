@@ -78,7 +78,7 @@ score_amount = 50
 
 [node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("5_vh88p")]
 node_to_move = NodePath("..")
-scroll_velocity = Vector2(0, 50)
+scroll_velocity = Vector2(0, 100)
 screen_exit_behavior = 2
 visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 

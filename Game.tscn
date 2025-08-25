@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0rtn4o22pc7i"]
+[gd_scene load_steps=6 format=3 uid="uid://b0rtn4o22pc7i"]
 
 [ext_resource type="Script" uid="uid://nsdlyiugsxxm" path="res://game.gd" id="1_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://1eag3rdh1g7n" path="res://Entities/player/player.tscn" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://ca781ity51gru" path="res://Entities/enemy_ufo/enemy_ufo.tscn" id="2_xkndl"]
 [ext_resource type="PackedScene" uid="uid://bde0q4c77473h" path="res://Entities/fuel/fuel.tscn" id="3_u44n3"]
+[ext_resource type="PackedScene" uid="uid://b6b7fotmpygi8" path="res://UI/player_info.tscn" id="5_t88pq"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_r0x5m")
@@ -25,10 +26,32 @@ color = Color(0.219608, 0.184314, 0.243137, 1)
 position = Vector2(640, 552)
 
 [node name="EnemyUfo" parent="." instance=ExtResource("2_xkndl")]
-position = Vector2(686, 235)
+position = Vector2(676, -453)
 
 [node name="Fuel" parent="." instance=ExtResource("3_u44n3")]
-position = Vector2(862, 560)
+position = Vector2(862, -160)
 
 [node name="Fuel2" parent="." instance=ExtResource("3_u44n3")]
-position = Vector2(450, 255)
+position = Vector2(450, -381)
+
+[node name="Control" type="Control" parent="."]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerInfo" parent="Control" instance=ExtResource("5_t88pq")]
+layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -100.0
+offset_right = 360.0
+offset_bottom = 0.0
+grow_vertical = 0

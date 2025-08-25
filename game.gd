@@ -6,10 +6,11 @@ var score: float
 
 func _ready() -> void:
 	Signals.score_earned.connect(on_score_earned)
+	Signals.scene_ready.emit()
 
 func _process(delta: float) -> void:
-	score += score_per_second * delta
+	on_score_earned(score_per_second * delta)
 
-func on_score_earned(amount: int) -> void:
+func on_score_earned(amount: float) -> void:
 	score += amount
-	print("Current score: %d" % score)
+	Signals.score_changed.emit(score)
