@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7istx6nx3nde"]
+
+[ext_resource type="Script" uid="uid://gdlpr8fy8t71" path="res://UI/General/score_controller.gd" id="1_gsqpq"]
+[ext_resource type="PackedScene" uid="uid://doctv7vllu3i5" path="res://UI/General/counter.tscn" id="1_v4a34"]
+
+[node name="Score" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gsqpq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 236.0
+offset_bottom = 20.0
+alignment = 2
+
+[node name="Counter" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter2" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter3" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter4" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter5" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter6" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter7" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter8" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter9" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Counter10" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8

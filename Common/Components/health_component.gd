@@ -21,7 +21,6 @@ func try_damage(node: Node2D) -> void:
 	take_damage((node as DamageComponent).damage_amount)
 
 func take_damage(amount: int) -> void:
-	print("taking damage %s" % get_parent().name)
 	current_health = maxi(current_health - amount, 0)
 	health_changed.emit(current_health)
 

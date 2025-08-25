@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://1eag3rdh1g7n" path="res://Entities/player/player.tscn" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://ca781ity51gru" path="res://Entities/enemy_ufo/enemy_ufo.tscn" id="2_xkndl"]
 [ext_resource type="PackedScene" uid="uid://bde0q4c77473h" path="res://Entities/fuel/fuel.tscn" id="3_u44n3"]
-[ext_resource type="PackedScene" uid="uid://b6b7fotmpygi8" path="res://UI/player_info.tscn" id="5_t88pq"]
+[ext_resource type="PackedScene" uid="uid://b6b7fotmpygi8" path="res://UI/player_info/player_info.tscn" id="5_t88pq"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_r0x5m")

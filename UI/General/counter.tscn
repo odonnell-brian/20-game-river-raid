@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://doctv7vllu3i5"]
+
+[ext_resource type="Texture2D" uid="uid://bku1mch1xbx2v" path="res://UI/General/Assets/numeral0.png" id="1_ijnps"]
+[ext_resource type="Script" uid="uid://dlmxtrxmjjf77" path="res://UI/General/counter.gd" id="1_yy4xc"]
+[ext_resource type="Texture2D" uid="uid://b44t52vme2qye" path="res://UI/General/Assets/numeral1.png" id="2_in0cs"]
+[ext_resource type="Texture2D" uid="uid://ddvhou2hkwej7" path="res://UI/General/Assets/numeral2.png" id="3_4sjge"]
+[ext_resource type="Texture2D" uid="uid://dckx13odm05qu" path="res://UI/General/Assets/numeral3.png" id="4_cwm7p"]
+[ext_resource type="Texture2D" uid="uid://ctghaeh7mhagv" path="res://UI/General/Assets/numeral4.png" id="5_jbxhl"]
+[ext_resource type="Texture2D" uid="uid://k5pcthqivkkd" path="res://UI/General/Assets/numeral5.png" id="6_yy4xc"]
+[ext_resource type="Texture2D" uid="uid://b0c7mtlgigikk" path="res://UI/General/Assets/numeral6.png" id="7_wgv1g"]
+[ext_resource type="Texture2D" uid="uid://dujiodf33g5u5" path="res://UI/General/Assets/numeral7.png" id="8_f8u18"]
+[ext_resource type="Texture2D" uid="uid://c2yfdy7jwnqhc" path="res://UI/General/Assets/numeral8.png" id="9_vm4bb"]
+[ext_resource type="Texture2D" uid="uid://fv0tmcquhj4k" path="res://UI/General/Assets/numeral9.png" id="10_3btt1"]
+
+[node name="Counter" type="Container"]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yy4xc")
+
+[node name="0" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ijnps")
+
+[node name="1" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_in0cs")
+
+[node name="2" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_4sjge")
+
+[node name="3" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_cwm7p")
+
+[node name="4" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_jbxhl")
+
+[node name="5" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_yy4xc")
+
+[node name="6" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_wgv1g")
+
+[node name="7" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_f8u18")
+
+[node name="8" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_vm4bb")
+
+[node name="9" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_3btt1")

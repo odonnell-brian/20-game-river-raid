@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6b7fotmpygi8"]
+
+[ext_resource type="Script" uid="uid://dglcxnipq01pj" path="res://UI/player_info/player_info_ui_controller.gd" id="1_8c8kf"]
+[ext_resource type="Texture2D" uid="uid://cs1l2w1rdt2sa" path="res://UI/player_info/assets/playerLife1_blue.png" id="2_id226"]
+[ext_resource type="PackedScene" uid="uid://c7istx6nx3nde" path="res://UI/General/score.tscn" id="2_uaivt"]
+[ext_resource type="Texture2D" uid="uid://dlgggt1lso7jd" path="res://UI/player_info/assets/numeralX.png" id="3_y7gqd"]
+[ext_resource type="PackedScene" uid="uid://doctv7vllu3i5" path="res://UI/General/counter.tscn" id="4_y7gqd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcr07"]
+bg_color = Color(0.211765, 0.733333, 0.960784, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PlayerInfo" type="Control" node_paths=PackedStringArray("lives_images")]
+custom_minimum_size = Vector2(720, 100)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 80.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8c8kf")
+lives_images = [null, null, null, null]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 2.0
+alignment = 1
+
+[node name="Fuel" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_pcr07")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Fuel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "FUEL"
+
+[node name="Score" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 25
+text = "Score:"
+
+[node name="Value" type="Label" parent="HBoxContainer/VBoxContainer/Score"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 25
+text = "0	"
+
+[node name="Score" parent="HBoxContainer/VBoxContainer/Score" instance=ExtResource("2_uaivt")]
+custom_minimum_size = Vector2(240, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Lives" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="LivesImage" type="TextureRect" parent="HBoxContainer/Lives"]
+custom_minimum_size = Vector2(33, 26)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_id226")
+
+[node name="XImage" type="TextureRect" parent="HBoxContainer/Lives"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_y7gqd")
+
+[node name="Counter" parent="HBoxContainer/Lives" instance=ExtResource("4_y7gqd")]
+layout_mode = 2
+size_flags_vertical = 4

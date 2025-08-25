@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func on_health_changed(current_health: int) -> void:
-	print("current health %d" % current_health)
 	hit_animation_player.play("blink")
 	Signals.player_health_changed.emit(current_health)
 

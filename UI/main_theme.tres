@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cxyxe1ur4gs11"]
+
+[ext_resource type="Texture2D" uid="uid://bqb8f11083l7r" path="res://UI/player_info/assets/buttonBlue.png" id="1_2nl5o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h32ur"]
+texture = ExtResource("1_2nl5o")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7m7pu"]
+bg_color = Color(0.211765, 0.733333, 0.960784, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 1
+
+[resource]
+ProgressBar/styles/background = SubResource("StyleBoxTexture_h32ur")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_7m7pu")
