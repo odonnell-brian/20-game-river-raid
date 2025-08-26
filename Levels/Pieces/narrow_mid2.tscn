@@ -4,11 +4,14 @@
 [ext_resource type="Script" uid="uid://c0dx0wdevhm75" path="res://Levels/Pieces/level_piece.gd" id="1_jfdvs"]
 [ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="2_dwc7f"]
 
-[node name="NarrowMid2" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom")]
+[node name="NarrowMid2" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom", "enemy_spawns", "fuel_spawns", "bridge_spawn")]
 script = ExtResource("1_jfdvs")
 stitch_point_top = NodePath("StitchPointTop")
 stitch_point_bottom = NodePath("StitchPointBottom")
 connections = Array[int]([2, 3])
+enemy_spawns = [NodePath("EnemySpawn1"), NodePath("EnemySpawn2"), NodePath("EnemySpawn3")]
+fuel_spawns = [NodePath("FuelSpawn")]
+bridge_spawn = NodePath("BridgeSpawn")
 
 [node name="AsteroidWallVertical" parent="." instance=ExtResource("1_2mtpx")]
 position = Vector2(-312, -194)
@@ -25,3 +28,18 @@ position = Vector2(0, 311)
 [node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("2_dwc7f")]
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, 100)
+
+[node name="FuelSpawn" type="Marker2D" parent="."]
+position = Vector2(0, -443)
+
+[node name="EnemySpawn1" type="Marker2D" parent="."]
+position = Vector2(217, -58)
+
+[node name="EnemySpawn2" type="Marker2D" parent="."]
+position = Vector2(-201, -272)
+
+[node name="EnemySpawn3" type="Marker2D" parent="."]
+position = Vector2(-201, 153)
+
+[node name="BridgeSpawn" type="Marker2D" parent="."]
+position = Vector2(0, -171)

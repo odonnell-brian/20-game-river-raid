@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://qs1s3nw4hf2r"]
+[gd_scene load_steps=10 format=3 uid="uid://qs1s3nw4hf2r"]
 
 [ext_resource type="Texture2D" uid="uid://ccbhjj38cx3sc" path="res://Entities/bridge/assets/spaceStation_001.png" id="1_m6lmw"]
+[ext_resource type="Script" uid="uid://c7tf3yin6mgwf" path="res://Entities/bridge/bridge.gd" id="1_vnhuv"]
 [ext_resource type="PackedScene" uid="uid://oswkwrdxerc3" path="res://Common/Components/auto_gun_component.tscn" id="2_knrd8"]
 [ext_resource type="PackedScene" uid="uid://lptnfuwdg7sg" path="res://Entities/laser/laser_bridge_right.tscn" id="3_2238q"]
 [ext_resource type="PackedScene" uid="uid://ckurkj3262ir2" path="res://Entities/laser/laser_bridge_left.tscn" id="4_2g2pj"]
@@ -11,7 +12,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnhuv"]
 size = Vector2(124, 39)
 
-[node name="Bridge" type="Node2D"]
+[node name="Bridge" type="Node2D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_vnhuv")
+health_component = NodePath("HealthComponent")
 
 [node name="SpaceStation029" type="Sprite2D" parent="."]
 texture = ExtResource("1_m6lmw")

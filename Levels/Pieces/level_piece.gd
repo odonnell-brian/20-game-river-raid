@@ -4,6 +4,9 @@ extends Node2D
 @export var stitch_point_top: Marker2D
 @export var stitch_point_bottom: Marker2D
 @export var connections: Array[Enums.LevelPieces]
+@export var enemy_spawns: Array[Marker2D] = []
+@export var fuel_spawns: Array[Marker2D] = []
+@export var bridge_spawn: Marker2D
 
 func get_connecting_piece() -> Enums.LevelPieces:
 	var scene_enum: Enums.LevelPieces = connections[randi_range(0, connections.size() - 1)]

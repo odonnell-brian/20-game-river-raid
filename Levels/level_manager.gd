@@ -23,14 +23,21 @@ func _ready() -> void:
 	mid_x = get_viewport().size.x / 2.0
 	level_pieces.append(starting_piece)
 
-	var prev_piece: LevelPiece = starting_piece
+	#level_pieces.append_array(generate_level_segment())
+	Signals.scene_ready.connect(generate_level_segment)
+
+func generate_level_segment() -> Array[LevelPiece]:
+	var prev_piece: LevelPiece = level_pieces[level_pieces.size() - 1]
+	var new_pieces: Array[LevelPiece] = []
 	for i in range(1, MAX_PIECES):
 		var next_piece_enum: Enums.LevelPieces = prev_piece.get_connecting_piece()
 
 		var next_level_piece = position_and_add_piece(prev_piece, LEVEL_PIECE_TO_SCENE.get(next_piece_enum))
-		level_pieces.append(next_level_piece)
+		new_pieces.append(next_level_piece)
 		prev_piece = next_level_piece
 
+	Signals.level_pieces_added.emit(new_pieces)
+	return level_pieces
 
 func position_and_add_piece(prev_piece: LevelPiece, next_piece: PackedScene) -> LevelPiece:
 	var level_piece: LevelPiece = next_piece.instantiate() as LevelPiece
