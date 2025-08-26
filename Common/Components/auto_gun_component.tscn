@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oswkwrdxerc3"]
+
+[ext_resource type="Script" uid="uid://dvpswm7vtlfp8" path="res://Common/Components/auto_gun_component.gd" id="1_vxprt"]
+
+[node name="AutoGunComponent" type="Node2D"]
+script = ExtResource("1_vxprt")

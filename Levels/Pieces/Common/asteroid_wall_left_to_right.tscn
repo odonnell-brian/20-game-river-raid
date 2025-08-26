@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://wqwo5pr75xsb"]
+
+[ext_resource type="PackedScene" uid="uid://201sw03qnl61" path="res://Entities/asteroid/asteroid_random.tscn" id="1_p0571"]
+
+[node name="AsteroidWallLeftToRight" type="Node2D"]
+
+[node name="Asteroid" parent="." instance=ExtResource("1_p0571")]
+
+[node name="Asteroid2" parent="." instance=ExtResource("1_p0571")]
+position = Vector2(42, -92)
+
+[node name="Asteroid3" parent="." instance=ExtResource("1_p0571")]
+position = Vector2(94, -183)

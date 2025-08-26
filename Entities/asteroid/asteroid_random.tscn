@@ -1,0 +1,76 @@
+[gd_scene load_steps=15 format=3 uid="uid://201sw03qnl61"]
+
+[ext_resource type="Script" uid="uid://d18yliursp4e6" path="res://Entities/asteroid/asteroid_random.gd" id="1_nrcho"]
+[ext_resource type="Texture2D" uid="uid://biq6j5tplgjrh" path="res://Entities/asteroid/assets/meteorBrown_big1.png" id="1_wc4mg"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="2_7tfc5"]
+[ext_resource type="Texture2D" uid="uid://dicc3o0b3tpxq" path="res://Entities/asteroid/assets/meteorBrown_big2.png" id="2_p4om7"]
+[ext_resource type="Texture2D" uid="uid://bw82f8q0f5n3c" path="res://Entities/asteroid/assets/meteorBrown_big3.png" id="3_07tah"]
+[ext_resource type="PackedScene" uid="uid://cwipwt2gs5mu2" path="res://Common/Components/random_rotation_component.tscn" id="3_8evnr"]
+[ext_resource type="Texture2D" uid="uid://cv115dqjoeahv" path="res://Entities/asteroid/assets/meteorBrown_big4.png" id="4_nrcho"]
+[ext_resource type="Texture2D" uid="uid://cvn1gypfjd0yi" path="res://Entities/asteroid/assets/meteorGrey_big1.png" id="5_jtjq1"]
+[ext_resource type="Texture2D" uid="uid://dpvl0gnnw4sxa" path="res://Entities/asteroid/assets/meteorGrey_big2.png" id="6_jipij"]
+[ext_resource type="Texture2D" uid="uid://nl750gyvy35y" path="res://Entities/asteroid/assets/meteorGrey_big3.png" id="7_gbt1b"]
+[ext_resource type="Texture2D" uid="uid://dpb8gsa0wtj1s" path="res://Entities/asteroid/assets/meteorGrey_big4.png" id="8_vnc61"]
+[ext_resource type="PackedScene" uid="uid://v414pd2kc0e6" path="res://Common/Components/random_sprite_component.tscn" id="11_07tah"]
+[ext_resource type="PackedScene" uid="uid://bess8icjqhhrt" path="res://Common/Components/random_z_index_component.tscn" id="13_jtjq1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_smt6q"]
+radius = 38.3275
+
+[node name="Asteroid" type="Node2D" node_paths=PackedStringArray("sprite_picker", "z_index_picker")]
+script = ExtResource("1_nrcho")
+sprite_picker = NodePath("RandomSpriteComponent")
+z_index_picker = NodePath("RandomZIndexComponent")
+
+[node name="MeteorBrownBig1" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("1_wc4mg")
+
+[node name="MeteorBrownBig2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("2_p4om7")
+
+[node name="MeteorBrownBig3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("3_07tah")
+
+[node name="MeteorBrownBig4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("4_nrcho")
+
+[node name="MeteorGreyBig1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("5_jtjq1")
+
+[node name="MeteorGreyBig2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("6_jipij")
+
+[node name="MeteorGreyBig3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("7_gbt1b")
+
+[node name="MeteorGreyBig4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("8_vnc61")
+
+[node name="DamageComponent" parent="." instance=ExtResource("2_7tfc5")]
+collision_layer = 25
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+shape = SubResource("CircleShape2D_smt6q")
+
+[node name="RandomRotationComponent" parent="." instance=ExtResource("3_8evnr")]
+rotation_per_second_range = Vector2(10, 50)
+
+[node name="RandomSpriteComponent" parent="." instance=ExtResource("11_07tah")]
+
+[node name="RandomZIndexComponent" parent="." instance=ExtResource("13_jtjq1")]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://lptnfuwdg7sg"]
+
+[ext_resource type="Texture2D" uid="uid://fbpc3nrequx1" path="res://Entities/laser/assets/laserRed04.png" id="1_wdsth"]
+[ext_resource type="PackedScene" uid="uid://ckwbw0c74p0n8" path="res://Common/Components/scroll_component.tscn" id="2_e8u22"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="3_o1u04"]
+[ext_resource type="Script" uid="uid://do8c4wk8akhul" path="res://Common/Components/health_component.gd" id="4_d8gau"]
+[ext_resource type="PackedScene" uid="uid://c25h3vsn263kc" path="res://Entities/laser/laser_explode.tscn" id="5_wyc7f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmm7o"]
+radius = 6.66667
+height = 37.3333
+
+[node name="LaserBridgeRight" type="Node2D"]
+z_index = -1
+rotation = 1.5708
+scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wdsth")
+
+[node name="ScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("2_e8u22")]
+node_to_move = NodePath("..")
+scroll_velocity = Vector2(1000, 0)
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="ScrollComponent"]
+z_index = -1
+position = Vector2(0.175553, -2.46435)
+scale = Vector2(0.677, 4)
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_o1u04")]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+shape = SubResource("CapsuleShape2D_lmm7o")
+
+[node name="HealthComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_d8gau")
+destroy_fx = ExtResource("5_wyc7f")
+metadata/_custom_type_script = "uid://do8c4wk8akhul"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+shape = SubResource("CapsuleShape2D_lmm7o")

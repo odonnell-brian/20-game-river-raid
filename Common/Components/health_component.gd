@@ -18,6 +18,9 @@ func try_damage(node: Node2D) -> void:
 	if not node is DamageComponent:
 		return
 
+	if node.get_parent() == get_parent():
+		print("damaging self %s" % [get_parent().name])
+
 	take_damage((node as DamageComponent).damage_amount)
 
 func take_damage(amount: int) -> void:

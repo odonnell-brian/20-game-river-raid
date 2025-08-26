@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm72oyjh7hgh3"
-path="res://.godot/imported/speed.png-f95eebc3d54ec1b7e9fafda055ff319f.ctex"
+uid="uid://ccbhjj38cx3sc"
+path="res://.godot/imported/spaceStation_001.png-3e22d5422f7bc1a07f22934582c5f207.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/laser/assets/speed.png"
-dest_files=["res://.godot/imported/speed.png-f95eebc3d54ec1b7e9fafda055ff319f.ctex"]
+source_file="res://Entities/bridge/assets/spaceStation_001.png"
+dest_files=["res://.godot/imported/spaceStation_001.png-3e22d5422f7bc1a07f22934582c5f207.ctex"]
 
 [params]
 

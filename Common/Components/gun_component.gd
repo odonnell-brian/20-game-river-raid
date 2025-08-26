@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 	try_shoot()
 
 func try_shoot() -> void:
-	if not Input.is_action_pressed("shoot") or not can_shoot:
+	if not shoot_triggered() or not can_shoot:
 		return
 
 	var projectile = projectile_entity.instantiate() as Node2D
@@ -26,3 +26,6 @@ func try_shoot() -> void:
 
 func on_cooldown_timeout() -> void:
 	can_shoot = true
+
+func shoot_triggered() -> bool:
+	return Input.is_action_pressed("shoot")

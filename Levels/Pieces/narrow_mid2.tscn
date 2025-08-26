@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu2jqpat7hof6"]
+
+[ext_resource type="PackedScene" uid="uid://ctqh86dmvas7w" path="res://Levels/Pieces/Common/asteroid_wall_vertical.tscn" id="1_2mtpx"]
+[ext_resource type="Script" uid="uid://c0dx0wdevhm75" path="res://Levels/Pieces/level_piece.gd" id="1_jfdvs"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="2_dwc7f"]
+
+[node name="NarrowMid2" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom")]
+script = ExtResource("1_jfdvs")
+stitch_point_top = NodePath("StitchPointTop")
+stitch_point_bottom = NodePath("StitchPointBottom")
+connections = Array[int]([2, 3])
+
+[node name="AsteroidWallVertical" parent="." instance=ExtResource("1_2mtpx")]
+position = Vector2(-312, -194)
+
+[node name="AsteroidWallVertical2" parent="." instance=ExtResource("1_2mtpx")]
+position = Vector2(312, -194)
+
+[node name="StitchPointTop" type="Marker2D" parent="."]
+position = Vector2(0, -618)
+
+[node name="StitchPointBottom" type="Marker2D" parent="."]
+position = Vector2(0, 311)
+
+[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("2_dwc7f")]
+node_to_move = NodePath("..")
+scroll_velocity = Vector2(0, 100)

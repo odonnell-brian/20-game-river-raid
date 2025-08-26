@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://v414pd2kc0e6"]
+
+[ext_resource type="Script" uid="uid://ubny8iwimya0" path="res://Common/Components/random_sprite_component.gd" id="1_amsvh"]
+
+[node name="RandomSpriteComponent" type="Node2D"]
+script = ExtResource("1_amsvh")

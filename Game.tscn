@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0rtn4o22pc7i"]
+[gd_scene load_steps=9 format=3 uid="uid://b0rtn4o22pc7i"]
 
 [ext_resource type="Script" uid="uid://nsdlyiugsxxm" path="res://game.gd" id="1_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://1eag3rdh1g7n" path="res://Entities/player/player.tscn" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://ca781ity51gru" path="res://Entities/enemy_ufo/enemy_ufo.tscn" id="2_xkndl"]
 [ext_resource type="PackedScene" uid="uid://bde0q4c77473h" path="res://Entities/fuel/fuel.tscn" id="3_u44n3"]
 [ext_resource type="PackedScene" uid="uid://b6b7fotmpygi8" path="res://UI/player_info/player_info.tscn" id="5_t88pq"]
+[ext_resource type="PackedScene" uid="uid://dl03qo8nto1be" path="res://Levels/LevelManager.tscn" id="7_joorw"]
+[ext_resource type="PackedScene" uid="uid://bqn63jl83y5er" path="res://Levels/Pieces/level_starting.tscn" id="8_2vekm"]
+[ext_resource type="PackedScene" uid="uid://qs1s3nw4hf2r" path="res://Entities/bridge/bridge.tscn" id="8_joorw"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_r0x5m")
@@ -55,3 +58,18 @@ offset_top = -100.0
 offset_right = 360.0
 offset_bottom = 0.0
 grow_vertical = 0
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("starting_piece") instance=ExtResource("7_joorw")]
+starting_piece = NodePath("LevelStarting")
+
+[node name="LevelStarting" parent="LevelManager" instance=ExtResource("8_2vekm")]
+position = Vector2(640, 183)
+
+[node name="Bridge" parent="." instance=ExtResource("8_joorw")]
+position = Vector2(640, 185)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = 641.0
+offset_right = 642.0
+offset_bottom = 720.0

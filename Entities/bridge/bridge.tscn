@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://qs1s3nw4hf2r"]
+
+[ext_resource type="Texture2D" uid="uid://ccbhjj38cx3sc" path="res://Entities/bridge/assets/spaceStation_001.png" id="1_m6lmw"]
+[ext_resource type="PackedScene" uid="uid://oswkwrdxerc3" path="res://Common/Components/auto_gun_component.tscn" id="2_knrd8"]
+[ext_resource type="PackedScene" uid="uid://lptnfuwdg7sg" path="res://Entities/laser/laser_bridge_right.tscn" id="3_2238q"]
+[ext_resource type="PackedScene" uid="uid://ckurkj3262ir2" path="res://Entities/laser/laser_bridge_left.tscn" id="4_2g2pj"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="5_7y41a"]
+[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health_component.tscn" id="6_pwqtm"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="7_pwqtm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnhuv"]
+size = Vector2(124, 39)
+
+[node name="Bridge" type="Node2D"]
+
+[node name="SpaceStation029" type="Sprite2D" parent="."]
+texture = ExtResource("1_m6lmw")
+
+[node name="GunRight" parent="." node_paths=PackedStringArray("projectile_spawn_marker", "cooldown_timer") instance=ExtResource("2_knrd8")]
+projectile_spawn_marker = NodePath("Marker2D")
+projectile_entity = ExtResource("3_2238q")
+cooldown_timer = NodePath("../Timer")
+
+[node name="Marker2D" type="Marker2D" parent="GunRight"]
+position = Vector2(84, 0)
+
+[node name="GunLeft" parent="." node_paths=PackedStringArray("projectile_spawn_marker", "cooldown_timer") instance=ExtResource("2_knrd8")]
+projectile_spawn_marker = NodePath("Marker2D")
+projectile_entity = ExtResource("4_2g2pj")
+cooldown_timer = NodePath("../Timer")
+
+[node name="Marker2D" type="Marker2D" parent="GunLeft"]
+position = Vector2(-84, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="DamageComponent" parent="." instance=ExtResource("5_7y41a")]
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_vnhuv")
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_pwqtm")]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_vnhuv")
+
+[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("7_pwqtm")]
+node_to_move = NodePath("..")
+scroll_velocity = Vector2(0, 100)

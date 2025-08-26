@@ -2,10 +2,10 @@ extends Control
 
 @export var lives_images: Array[TextureRect]
 
-@onready var fuel_progress_bar: ProgressBar = $HBoxContainer/VBoxContainer/Fuel
-@onready var score_value_label: Label = $HBoxContainer/VBoxContainer/Score/Value
-@onready var score_controller: ScoreController = $HBoxContainer/VBoxContainer/Score/Score
-@onready var lives_counter: Counter = $HBoxContainer/Lives/Counter
+@onready var fuel_progress_bar: ProgressBar = $PanelContainer/HBoxContainer/VBoxContainer/Fuel
+@onready var score_value_label: Label = $PanelContainer/HBoxContainer/VBoxContainer/Score/Value
+@onready var score_controller: ScoreController = $PanelContainer/HBoxContainer/VBoxContainer/Score/Score
+@onready var lives_counter: Counter = $PanelContainer/HBoxContainer/Lives/Counter
 
 func _ready() -> void:
 	Signals.player_initialized.connect(init_ui)

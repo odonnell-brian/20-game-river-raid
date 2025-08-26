@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqpj3q6rvnqwv"]
+
+[ext_resource type="Texture2D" uid="uid://dpvl0gnnw4sxa" path="res://Entities/asteroid/assets/meteorGrey_big2.png" id="1_w2ypp"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="2_0fxda"]
+[ext_resource type="PackedScene" uid="uid://cwipwt2gs5mu2" path="res://Common/Components/random_rotation_component.tscn" id="3_608ba"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_smt6q"]
+radius = 38.3275
+
+[node name="Asteroid" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_w2ypp")
+
+[node name="DamageComponent" parent="." instance=ExtResource("2_0fxda")]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+shape = SubResource("CircleShape2D_smt6q")
+
+[node name="RandomRotationComponent" parent="." instance=ExtResource("3_608ba")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c71qbq6jv2h53"]
+
+[ext_resource type="PackedScene" uid="uid://bqn63jl83y5er" path="res://Levels/Pieces/level_starting.tscn" id="1_7mba1"]
+[ext_resource type="PackedScene" uid="uid://clrcssh2giywo" path="res://Levels/Pieces/wide_to_narrow.tscn" id="2_soq8b"]
+[ext_resource type="PackedScene" uid="uid://i15qj34wu415" path="res://Levels/Pieces/narrow_to_wide.tscn" id="3_soq8b"]
+
+[node name="LevelTest" type="Node2D"]
+
+[node name="LevelStarting" parent="." instance=ExtResource("1_7mba1")]
+
+[node name="WideToNarrow" parent="." instance=ExtResource("2_soq8b")]
+position = Vector2(0, -1029)
+
+[node name="WideToNarrow2" parent="." instance=ExtResource("3_soq8b")]
+position = Vector2(-19, -2151)
+
+[node name="LevelStarting2" parent="." instance=ExtResource("1_7mba1")]
+position = Vector2(0, -3364)
