@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bx1aabui620ut"]
+
+[ext_resource type="Texture2D" uid="uid://d1rdylaunrd62" path="res://Entities/enemy_ship/assets/enemyRed1.png" id="1_fvq66"]
+[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health/health_component.tscn" id="2_v1bs5"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/health/damage_component.tscn" id="3_n4epb"]
+[ext_resource type="PackedScene" uid="uid://cu0b5uclr3cp1" path="res://Common/Components/score_component.tscn" id="4_ex6sn"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="5_qey08"]
+[ext_resource type="PackedScene" uid="uid://bt2fhysjxlhm7" path="res://Common/Components/movement/enemy_move_component.tscn" id="6_tb1pp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_33no7"]
+radius = 45.156
+
+[node name="EnemyShip" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fvq66")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_v1bs5")]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+shape = SubResource("CircleShape2D_33no7")
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_n4epb")]
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+shape = SubResource("CircleShape2D_33no7")
+
+[node name="ScoreComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ex6sn")]
+health_component = NodePath("../HealthComponent")
+score_amount = 75
+
+[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("5_qey08")]
+node_to_move = NodePath("..")
+scroll_velocity = Vector2(0, 100)
+screen_exit_behavior = 1
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelEntityScrollComponent"]
+position = Vector2(-7.62939e-06, -0.624998)
+scale = Vector2(7.125, 7.5625)
+
+[node name="EnemyMoveComponent" parent="." instance=ExtResource("6_tb1pp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyMoveComponent"]
+shape = SubResource("CircleShape2D_33no7")

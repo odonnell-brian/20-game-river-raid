@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://1eag3rdh1g7n"]
+[gd_scene load_steps=22 format=3 uid="uid://1eag3rdh1g7n"]
 
 [ext_resource type="Script" uid="uid://d1lpfj256pd1m" path="res://Entities/player/player.gd" id="1_m0gmf"]
 [ext_resource type="Texture2D" uid="uid://4785eyc08rok" path="res://Entities/player/assets/playerShip1_blue.png" id="1_qjpfe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cug7jg6bjdhst" path="res://Entities/player/assets/fire15.png" id="3_3we0j"]
 [ext_resource type="PackedScene" uid="uid://dehvl3160x1na" path="res://Common/Components/visual/animation_component.tscn" id="3_nqdw5"]
 [ext_resource type="PackedScene" uid="uid://df6bm56esesti" path="res://Common/Components/movement/movement_component.tscn" id="4_3we0j"]
+[ext_resource type="PackedScene" uid="uid://b7qq4pynpj12e" path="res://Entities/player/player_collision_polygon.tscn" id="5_5udp2"]
 [ext_resource type="PackedScene" uid="uid://kkmrqkejd5ym" path="res://Common/Components/movement/acceleration_component.tscn" id="7_vso2a"]
 [ext_resource type="PackedScene" uid="uid://pl6vbxv0dhn3" path="res://Common/Components/input_gun_component.tscn" id="8_kyxaw"]
 [ext_resource type="PackedScene" uid="uid://6vucxb020b3v" path="res://Entities/laser/laser.tscn" id="9_v3hes"]
@@ -185,9 +186,8 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(23, 37)
 texture = ExtResource("3_3we0j")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" parent="." instance=ExtResource("5_5udp2")]
 visible = false
-polygon = PackedVector2Array(-9, -38, 10, -38, 15, -14, 51, -7, 48, 25, 9, 39, -8, 39, -48, 27, -51, -8, -14, -14)
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("movement_component", "animation_player") instance=ExtResource("3_nqdw5")]
 movement_component = NodePath("../MovementComponent")
@@ -211,25 +211,23 @@ position = Vector2(0, -45)
 wait_time = 0.5
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("invuln_timer") instance=ExtResource("10_twsei")]
+visible = false
 collision_layer = 0
 max_health = 3
 destroy_on_deplete = false
 invuln_timer = NodePath("Timer")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HealthComponent"]
-visible = false
-polygon = PackedVector2Array(-9, -38, 10, -38, 15, -14, 51, -7, 48, 25, 9, 39, -8, 39, -48, 27, -51, -8, -14, -14)
-
 [node name="Timer" type="Timer" parent="HealthComponent"]
 wait_time = 2.0
 
+[node name="CollisionPolygon2D" parent="HealthComponent" instance=ExtResource("5_5udp2")]
+
 [node name="DamageComponent" parent="." instance=ExtResource("11_2xrie")]
+visible = false
 collision_layer = 26
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageComponent"]
-visible = false
-polygon = PackedVector2Array(-9, -38, 10, -38, 15, -14, 51, -7, 48, 25, 9, 39, -8, 39, -48, 27, -51, -8, -14, -14)
+[node name="CollisionPolygon2D" parent="DamageComponent" instance=ExtResource("5_5udp2")]
 
 [node name="FuelComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_v3hes")]
 fuel_loss_per_second = 2.0

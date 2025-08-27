@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfq6hjn1x034y"]
+
+[ext_resource type="Texture2D" uid="uid://dfsanubjajdxb" path="res://Entities/enemy_ship/assets/spaceShips_007.png" id="1_4a3th"]
+[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health/health_component.tscn" id="2_357dd"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/health/damage_component.tscn" id="3_wdaq8"]
+[ext_resource type="PackedScene" uid="uid://cu0b5uclr3cp1" path="res://Common/Components/score_component.tscn" id="4_6iq7a"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="5_fhlkh"]
+[ext_resource type="PackedScene" uid="uid://bt2fhysjxlhm7" path="res://Common/Components/movement/enemy_move_component.tscn" id="6_yxnky"]
+
+[node name="EnemyShip" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4a3th")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_357dd")]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HealthComponent"]
+polygon = PackedVector2Array(-32.5, -40, -1.25, -21.25, 32.5, -40, 32.5, 8.75, 43.75, 35, 11.25, 26.25, -16.25, 25, -43.75, 36.25, -31.25, 8.75)
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_wdaq8")]
+visible = false
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageComponent"]
+polygon = PackedVector2Array(-32.5, -40, -1.25, -21.25, 32.5, -40, 32.5, 8.75, 43.75, 35, 11.25, 26.25, -16.25, 25, -43.75, 36.25, -31.25, 8.75)
+
+[node name="ScoreComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_6iq7a")]
+visible = false
+health_component = NodePath("../HealthComponent")
+score_amount = 75
+
+[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("5_fhlkh")]
+node_to_move = NodePath("..")
+scroll_velocity = Vector2(0, 100)
+screen_exit_behavior = 1
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelEntityScrollComponent"]
+position = Vector2(-7.62939e-06, -0.624998)
+scale = Vector2(7.125, 7.5625)
+
+[node name="EnemyMoveComponent" parent="." instance=ExtResource("6_yxnky")]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyMoveComponent"]
+polygon = PackedVector2Array(-32.5, -40, -1.25, -21.25, 32.5, -40, 32.5, 8.75, 43.75, 35, 11.25, 26.25, -16.25, 25, -43.75, 36.25, -31.25, 8.75)
