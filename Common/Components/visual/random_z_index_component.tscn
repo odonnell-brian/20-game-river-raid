@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bess8icjqhhrt"]
 
-[ext_resource type="Script" uid="uid://bwitvwx8g6d78" path="res://Common/Components/random_z_index_component.gd" id="1_tikow"]
+[ext_resource type="Script" uid="uid://bwitvwx8g6d78" path="res://Common/Components/visual/random_z_index_component.gd" id="1_tikow"]
 
 [node name="RandomZIndexComponent" type="Node2D"]
 script = ExtResource("1_tikow")

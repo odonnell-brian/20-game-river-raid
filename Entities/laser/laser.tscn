@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://6vucxb020b3v"]
 
 [ext_resource type="Texture2D" uid="uid://cv6bgarxpkjeu" path="res://Entities/laser/assets/laserBlue04.png" id="1_iutlv"]
-[ext_resource type="PackedScene" uid="uid://ckwbw0c74p0n8" path="res://Common/Components/scroll_component.tscn" id="2_6mloo"]
-[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="3_o3rua"]
-[ext_resource type="Script" uid="uid://do8c4wk8akhul" path="res://Common/Components/health_component.gd" id="4_lmm7o"]
+[ext_resource type="PackedScene" uid="uid://ckwbw0c74p0n8" path="res://Common/Components/movement/scroll_component.tscn" id="2_6mloo"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/health/damage_component.tscn" id="3_o3rua"]
+[ext_resource type="Script" uid="uid://do8c4wk8akhul" path="res://Common/Components/health/health_component.gd" id="4_lmm7o"]
 [ext_resource type="PackedScene" uid="uid://c25h3vsn263kc" path="res://Entities/laser/laser_explode.tscn" id="5_jnchk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmm7o"]

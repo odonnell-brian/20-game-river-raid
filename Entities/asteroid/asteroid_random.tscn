@@ -1,18 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://201sw03qnl61"]
+[gd_scene load_steps=16 format=3 uid="uid://201sw03qnl61"]
 
 [ext_resource type="Script" uid="uid://d18yliursp4e6" path="res://Entities/asteroid/asteroid_random.gd" id="1_nrcho"]
 [ext_resource type="Texture2D" uid="uid://biq6j5tplgjrh" path="res://Entities/asteroid/assets/meteorBrown_big1.png" id="1_wc4mg"]
-[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="2_7tfc5"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/health/damage_component.tscn" id="2_7tfc5"]
 [ext_resource type="Texture2D" uid="uid://dicc3o0b3tpxq" path="res://Entities/asteroid/assets/meteorBrown_big2.png" id="2_p4om7"]
 [ext_resource type="Texture2D" uid="uid://bw82f8q0f5n3c" path="res://Entities/asteroid/assets/meteorBrown_big3.png" id="3_07tah"]
-[ext_resource type="PackedScene" uid="uid://cwipwt2gs5mu2" path="res://Common/Components/random_rotation_component.tscn" id="3_8evnr"]
+[ext_resource type="PackedScene" uid="uid://cwipwt2gs5mu2" path="res://Common/Components/visual/random_rotation_component.tscn" id="3_8evnr"]
 [ext_resource type="Texture2D" uid="uid://cv115dqjoeahv" path="res://Entities/asteroid/assets/meteorBrown_big4.png" id="4_nrcho"]
 [ext_resource type="Texture2D" uid="uid://cvn1gypfjd0yi" path="res://Entities/asteroid/assets/meteorGrey_big1.png" id="5_jtjq1"]
 [ext_resource type="Texture2D" uid="uid://dpvl0gnnw4sxa" path="res://Entities/asteroid/assets/meteorGrey_big2.png" id="6_jipij"]
 [ext_resource type="Texture2D" uid="uid://nl750gyvy35y" path="res://Entities/asteroid/assets/meteorGrey_big3.png" id="7_gbt1b"]
 [ext_resource type="Texture2D" uid="uid://dpb8gsa0wtj1s" path="res://Entities/asteroid/assets/meteorGrey_big4.png" id="8_vnc61"]
-[ext_resource type="PackedScene" uid="uid://v414pd2kc0e6" path="res://Common/Components/random_sprite_component.tscn" id="11_07tah"]
-[ext_resource type="PackedScene" uid="uid://bess8icjqhhrt" path="res://Common/Components/random_z_index_component.tscn" id="13_jtjq1"]
+[ext_resource type="PackedScene" uid="uid://v414pd2kc0e6" path="res://Common/Components/visual/random_sprite_component.tscn" id="11_07tah"]
+[ext_resource type="PackedScene" uid="uid://bess8icjqhhrt" path="res://Common/Components/visual/random_z_index_component.tscn" id="13_jtjq1"]
+[ext_resource type="PackedScene" uid="uid://kbe1jph10rd8" path="res://Common/Components/movement/path_blocker_component.tscn" id="14_jipij"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smt6q"]
 radius = 38.3275
@@ -74,3 +75,8 @@ rotation_per_second_range = Vector2(10, 50)
 [node name="RandomSpriteComponent" parent="." instance=ExtResource("11_07tah")]
 
 [node name="RandomZIndexComponent" parent="." instance=ExtResource("13_jtjq1")]
+
+[node name="PathBlockerComponent" parent="." instance=ExtResource("14_jipij")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathBlockerComponent"]
+shape = SubResource("CircleShape2D_smt6q")

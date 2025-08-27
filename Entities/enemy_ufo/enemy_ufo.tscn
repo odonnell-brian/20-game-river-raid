@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ca781ity51gru"]
+[gd_scene load_steps=11 format=3 uid="uid://ca781ity51gru"]
 
 [ext_resource type="Texture2D" uid="uid://cm54pe4rn5fkx" path="res://Entities/enemy_ufo/assets/ufoRed.png" id="1_tooo2"]
-[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health_component.tscn" id="2_fd13w"]
-[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="3_33no7"]
+[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health/health_component.tscn" id="2_fd13w"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/health/damage_component.tscn" id="3_33no7"]
 [ext_resource type="PackedScene" uid="uid://cu0b5uclr3cp1" path="res://Common/Components/score_component.tscn" id="4_twn3k"]
-[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="5_vh88p"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="5_vh88p"]
+[ext_resource type="PackedScene" uid="uid://bt2fhysjxlhm7" path="res://Common/Components/movement/enemy_move_component.tscn" id="6_orbta"]
 
 [sub_resource type="Animation" id="Animation_twn3k"]
 length = 0.001
@@ -86,3 +87,8 @@ visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelEntityScrollComponent"]
 position = Vector2(-0.499979, -0.624998)
 scale = Vector2(3.45, 7.5625)
+
+[node name="EnemyMoveComponent" parent="." instance=ExtResource("6_orbta")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyMoveComponent"]
+shape = SubResource("CircleShape2D_33no7")

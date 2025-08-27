@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kbe1jph10rd8"]
+
+[ext_resource type="Script" uid="uid://bimriqt5vmxka" path="res://Common/Components/movement/path_blocker_component.gd" id="1_5ho8q"]
+
+[node name="PathBlockerComponent" type="Area2D"]
+script = ExtResource("1_5ho8q")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt2fhysjxlhm7"]
+
+[ext_resource type="Script" uid="uid://bv2rne1jpyaal" path="res://Common/Components/movement/enemy_move_component.gd" id="1_drq3j"]
+
+[node name="EnemyMoveComponent" type="Area2D"]
+script = ExtResource("1_drq3j")
+
+[node name="IdleTimer" type="Timer" parent="."]

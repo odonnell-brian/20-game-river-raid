@@ -1,0 +1,2 @@
+class_name PathBlockerComponent
+extends Area2D

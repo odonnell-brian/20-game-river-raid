@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwipwt2gs5mu2"]
 
-[ext_resource type="Script" uid="uid://vfeep6onj8st" path="res://Common/Components/random_rotation_component.gd" id="1_gbvsa"]
+[ext_resource type="Script" uid="uid://vfeep6onj8st" path="res://Common/Components/visual/random_rotation_component.gd" id="1_gbvsa"]
 
 [node name="RandomRotationComponent" type="Node2D"]
 script = ExtResource("1_gbvsa")

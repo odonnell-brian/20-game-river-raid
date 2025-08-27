@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://db3twsdalc7ft"]
 
-[ext_resource type="Script" uid="uid://cgcrdajyegwxk" path="res://Common/Components/level_entity_scroll_component.gd" id="1_u04sa"]
+[ext_resource type="Script" uid="uid://cgcrdajyegwxk" path="res://Common/Components/movement/level_entity_scroll_component.gd" id="1_u04sa"]
 
 [node name="LevelEntityScrollComponent" type="Node2D"]
 script = ExtResource("1_u04sa")

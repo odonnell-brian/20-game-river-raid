@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ctqh86dmvas7w" path="res://Levels/Pieces/Common/asteroid_wall_vertical.tscn" id="1_5tjaj"]
 [ext_resource type="Script" uid="uid://c0dx0wdevhm75" path="res://Levels/Pieces/level_piece.gd" id="1_ya1y7"]
-[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="2_x3cxi"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="2_x3cxi"]
 
 [node name="LevelStarting" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom", "enemy_spawns", "fuel_spawns", "bridge_spawn")]
 script = ExtResource("1_ya1y7")

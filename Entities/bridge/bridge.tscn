@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://oswkwrdxerc3" path="res://Common/Components/auto_gun_component.tscn" id="2_knrd8"]
 [ext_resource type="PackedScene" uid="uid://lptnfuwdg7sg" path="res://Entities/laser/laser_bridge_right.tscn" id="3_2238q"]
 [ext_resource type="PackedScene" uid="uid://ckurkj3262ir2" path="res://Entities/laser/laser_bridge_left.tscn" id="4_2g2pj"]
-[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="5_7y41a"]
-[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health_component.tscn" id="6_pwqtm"]
-[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="7_pwqtm"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/health/damage_component.tscn" id="5_7y41a"]
+[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health/health_component.tscn" id="6_pwqtm"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="7_pwqtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnhuv"]
 size = Vector2(124, 39)

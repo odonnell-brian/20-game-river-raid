@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c25h3vsn263kc"]
 
 [ext_resource type="Texture2D" uid="uid://cd7ctrutmtc27" path="res://Entities/laser/assets/laserBlue08.png" id="1_iepu7"]
-[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="2_w60ej"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="2_w60ej"]
 
 [sub_resource type="Animation" id="Animation_w60ej"]
 resource_name = "fade"

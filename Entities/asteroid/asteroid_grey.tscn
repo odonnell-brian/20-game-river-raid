@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bk8h5e6krajyu"]
 
 [ext_resource type="Texture2D" uid="uid://cvn1gypfjd0yi" path="res://Entities/asteroid/assets/meteorGrey_big1.png" id="1_mjsa4"]
-[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="2_fgy8j"]
-[ext_resource type="PackedScene" uid="uid://cwipwt2gs5mu2" path="res://Common/Components/random_rotation_component.tscn" id="3_ujfig"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/health/damage_component.tscn" id="2_fgy8j"]
+[ext_resource type="PackedScene" uid="uid://cwipwt2gs5mu2" path="res://Common/Components/visual/random_rotation_component.tscn" id="3_ujfig"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smt6q"]
 radius = 38.3275

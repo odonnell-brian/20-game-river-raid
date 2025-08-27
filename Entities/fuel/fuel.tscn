@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bde0q4c77473h"]
 
 [ext_resource type="Texture2D" uid="uid://b5slhfk3cn2qr" path="res://Entities/fuel/assets/spaceBuilding_024.png" id="1_e5q3r"]
-[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health_component.tscn" id="2_r5tfq"]
-[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/damage_component.tscn" id="3_1xm7c"]
+[ext_resource type="PackedScene" uid="uid://cyap6s0j8fx3g" path="res://Common/Components/health/health_component.tscn" id="2_r5tfq"]
+[ext_resource type="PackedScene" uid="uid://xdwxb4gplldm" path="res://Common/Components/health/damage_component.tscn" id="3_1xm7c"]
 [ext_resource type="PackedScene" uid="uid://48y5sqwbpr6h" path="res://Common/Components/fuel_provider_component.tscn" id="4_veaxk"]
-[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/level_entity_scroll_component.tscn" id="5_ojt5p"]
+[ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="5_ojt5p"]
 [ext_resource type="PackedScene" uid="uid://cu0b5uclr3cp1" path="res://Common/Components/score_component.tscn" id="6_jl7h7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xm7c"]
@@ -44,15 +44,10 @@ shape = SubResource("RectangleShape2D_jl7h7")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_f0xnm")
 
-[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("5_ojt5p")]
+[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("5_ojt5p")]
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, 100)
 screen_exit_behavior = 2
-visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelEntityScrollComponent"]
-position = Vector2(0, 0.999997)
-scale = Vector2(1, 12.6)
 
 [node name="ScoreComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_jl7h7")]
 health_component = NodePath("../HealthComponent")
