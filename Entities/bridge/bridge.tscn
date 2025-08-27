@@ -57,3 +57,8 @@ shape = SubResource("RectangleShape2D_vnhuv")
 [node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("7_pwqtm")]
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, 100)
+screen_exit_behavior = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelEntityScrollComponent"]
+position = Vector2(0, 3)
+scale = Vector2(1, 8.2)

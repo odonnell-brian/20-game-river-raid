@@ -6,13 +6,20 @@
 
 [node name="LevelTest" type="Node2D"]
 
-[node name="LevelStarting" parent="." instance=ExtResource("1_7mba1")]
+[node name="Disabled" type="Node2D" parent="."]
+process_mode = 4
+visible = false
 
-[node name="WideToNarrow" parent="." instance=ExtResource("2_soq8b")]
+[node name="Pieces" type="Node2D" parent="."]
+position = Vector2(640, 0)
+
+[node name="LevelStarting" parent="Pieces" instance=ExtResource("1_7mba1")]
+
+[node name="WideToNarrow" parent="Pieces" instance=ExtResource("2_soq8b")]
 position = Vector2(0, -1029)
 
-[node name="WideToNarrow2" parent="." instance=ExtResource("3_soq8b")]
+[node name="WideToNarrow2" parent="Pieces" instance=ExtResource("3_soq8b")]
 position = Vector2(-19, -2151)
 
-[node name="LevelStarting2" parent="." instance=ExtResource("1_7mba1")]
+[node name="LevelStarting2" parent="Pieces" instance=ExtResource("1_7mba1")]
 position = Vector2(0, -3364)

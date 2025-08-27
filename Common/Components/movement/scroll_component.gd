@@ -8,7 +8,7 @@ const DESTROY_BUFFER_PIXELS: float = 50.0
 @export var node_to_move: Node2D
 @export var scroll_velocity: Vector2
 
-@export var screen_exit_behavior: ScreenExitBehavior = ScreenExitBehavior.DESTROY
+@export var screen_exit_behavior: ScreenExitBehavior = ScreenExitBehavior.NONE
 @export var visibility_notifier: VisibleOnScreenNotifier2D
 
 var spawn_position: Vector2

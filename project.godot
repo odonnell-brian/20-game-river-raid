@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Signals="*res://Globals/global_signals.gd"
 Enums="*res://Globals/global_enums.gd"
 GlobalScenes="*res://Globals/global_scenes.gd"
+GlobalData="*res://Globals/global_data.gd"
 
 [display]
 

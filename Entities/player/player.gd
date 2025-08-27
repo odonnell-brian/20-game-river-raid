@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 	if acceleration_component.handle_acceleration(delta):
 		Signals.player_vertical_acceleration_changed.emit(acceleration_component.current_acceleration)
+		GlobalData.player_velocity_percent = acceleration_component.current_acceleration
 
 	move_and_slide()
 

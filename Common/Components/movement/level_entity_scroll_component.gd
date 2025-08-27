@@ -7,7 +7,7 @@ var adjusted_scroll_velocity: Vector2
 
 func _ready() -> void:
 	super()
-	adjusted_scroll_velocity = SCROLL_VELOCITY
+	adjusted_scroll_velocity = SCROLL_VELOCITY * max(1, GlobalData.player_velocity_percent)
 	Signals.player_vertical_acceleration_changed.connect(set_adjusted_velocity)
 
 func set_adjusted_velocity(player_acceleration_percent: float) -> void:

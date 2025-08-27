@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c0dx0wdevhm75" path="res://Levels/Pieces/level_piece.gd" id="1_ya1y7"]
 [ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="2_x3cxi"]
 
-[node name="LevelStarting" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom", "enemy_spawns", "fuel_spawns", "bridge_spawn")]
+[node name="LevelStarting" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom", "enemy_spawns", "fuel_spawns", "bridge_spawn", "visibility_notifier")]
 script = ExtResource("1_ya1y7")
 stitch_point_top = NodePath("StitchPointTop")
 stitch_point_bottom = NodePath("StitchPointBottom")
@@ -12,6 +12,7 @@ connections = Array[int]([0, 1])
 enemy_spawns = [NodePath("EnemySpawn1"), NodePath("EnemySpawn2")]
 fuel_spawns = [NodePath("FuelSpawn")]
 bridge_spawn = NodePath("BridgeSpawn")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="AsteroidWallVertical" parent="." instance=ExtResource("1_5tjaj")]
 position = Vector2(-417.5, 0)
@@ -19,10 +20,10 @@ position = Vector2(-417.5, 0)
 [node name="AsteroidWallVertical2" parent="." instance=ExtResource("1_5tjaj")]
 position = Vector2(417.5, 0)
 
-[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("2_x3cxi")]
+[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("2_x3cxi")]
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, 100)
-screen_exit_behavior = 0
+visibility_notifier = NodePath("../VisibleOnScreenNotifier2D")
 
 [node name="StitchPointTop" type="Marker2D" parent="."]
 position = Vector2(0, -435)
@@ -40,3 +41,6 @@ position = Vector2(-201, -272)
 
 [node name="BridgeSpawn" type="Marker2D" parent="."]
 position = Vector2(0, -171)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -484)

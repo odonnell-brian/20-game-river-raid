@@ -20,6 +20,7 @@ texture = ExtResource("1_iutlv")
 [node name="ScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("2_6mloo")]
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, -1000)
+screen_exit_behavior = 1
 visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="ScrollComponent"]

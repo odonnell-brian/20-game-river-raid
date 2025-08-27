@@ -47,7 +47,11 @@ shape = SubResource("RectangleShape2D_f0xnm")
 [node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("5_ojt5p")]
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, 100)
-screen_exit_behavior = 2
+screen_exit_behavior = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="LevelEntityScrollComponent"]
+position = Vector2(0, -1.5)
+scale = Vector2(1, 12.15)
 
 [node name="ScoreComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_jl7h7")]
 health_component = NodePath("../HealthComponent")

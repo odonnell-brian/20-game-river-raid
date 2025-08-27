@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxgb5iid443km"]
+
+[ext_resource type="PackedScene" uid="uid://qs1s3nw4hf2r" path="res://Entities/bridge/bridge.tscn" id="1_uhqqe"]
+[ext_resource type="PackedScene" uid="uid://ctqh86dmvas7w" path="res://Levels/Pieces/Common/asteroid_wall_vertical.tscn" id="2_ia1lp"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Bridge" parent="." instance=ExtResource("1_uhqqe")]
+position = Vector2(596, 293)
+
+[node name="LevelEntityScrollComponent" parent="Bridge" index="6"]
+process_mode = 4
+
+[node name="AsteroidWallVertical" parent="." instance=ExtResource("2_ia1lp")]
+position = Vector2(292, 300)
+
+[editable path="Bridge"]

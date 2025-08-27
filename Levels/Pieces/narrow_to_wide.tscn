@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="4_qe0ox"]
 [ext_resource type="PackedScene" uid="uid://ctqh86dmvas7w" path="res://Levels/Pieces/Common/asteroid_wall_vertical.tscn" id="4_we8n8"]
 
-[node name="NarrowToWide" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom", "enemy_spawns", "fuel_spawns", "bridge_spawn")]
+[node name="NarrowToWide" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom", "enemy_spawns", "fuel_spawns", "bridge_spawn", "visibility_notifier")]
 script = ExtResource("1_qe0ox")
 stitch_point_top = NodePath("StitchPointTop")
 stitch_point_bottom = NodePath("StitchPointBottom")
@@ -13,6 +13,7 @@ connections = Array[int]([1, 0])
 enemy_spawns = [NodePath("EnemySpawn1"), NodePath("EnemySpawn2"), NodePath("EnemySpawn3")]
 fuel_spawns = [NodePath("FuelSpawn")]
 bridge_spawn = NodePath("BridgeSpawn")
+visibility_notifier = NodePath("VisibleOnScreenNotifier")
 
 [node name="AsteroidWallLeftToRight" parent="." instance=ExtResource("3_ahnh0")]
 position = Vector2(312, -475)
@@ -33,9 +34,10 @@ position = Vector2(0, -712)
 [node name="StitchPointBottom" type="Marker2D" parent="."]
 position = Vector2(0, 503)
 
-[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("4_qe0ox")]
+[node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("4_qe0ox")]
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, 100)
+visibility_notifier = NodePath("../VisibleOnScreenNotifier")
 
 [node name="FuelSpawn" type="Marker2D" parent="."]
 position = Vector2(-116, 251)
@@ -51,3 +53,6 @@ position = Vector2(106, -260)
 
 [node name="BridgeSpawn" type="Marker2D" parent="."]
 position = Vector2(0, -171)
+
+[node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -766)

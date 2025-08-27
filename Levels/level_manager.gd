@@ -18,26 +18,29 @@ const LEVEL_PIECE_TO_SCENE: Dictionary[Enums.LevelPieces, PackedScene] = {
 
 var level_pieces: Array[LevelPiece]
 var mid_x: float
+var pieces_exited: int = 0
 
 func _ready() -> void:
 	mid_x = get_viewport().size.x / 2.0
 	level_pieces.append(starting_piece)
+	starting_piece.level_piece_exited_screen.connect(on_piece_exited_screen)
+	Signals.scene_ready.connect(generate_level_segment.bind(MAX_PIECES - 1))
 
-	#level_pieces.append_array(generate_level_segment())
-	Signals.scene_ready.connect(generate_level_segment)
+func generate_level_segment(num_pieces: int) -> void:
+	print("\nGenerating new level segment")
 
-func generate_level_segment() -> Array[LevelPiece]:
 	var prev_piece: LevelPiece = level_pieces[level_pieces.size() - 1]
 	var new_pieces: Array[LevelPiece] = []
-	for i in range(1, MAX_PIECES):
+	for i in range(0, num_pieces):
 		var next_piece_enum: Enums.LevelPieces = prev_piece.get_connecting_piece()
 
 		var next_level_piece = position_and_add_piece(prev_piece, LEVEL_PIECE_TO_SCENE.get(next_piece_enum))
+		next_level_piece.level_piece_exited_screen.connect(on_piece_exited_screen)
 		new_pieces.append(next_level_piece)
+		level_pieces.append(next_level_piece)
 		prev_piece = next_level_piece
 
 	Signals.level_pieces_added.emit(new_pieces)
-	return level_pieces
 
 func position_and_add_piece(prev_piece: LevelPiece, next_piece: PackedScene) -> LevelPiece:
 	var level_piece: LevelPiece = next_piece.instantiate() as LevelPiece
@@ -47,3 +50,17 @@ func position_and_add_piece(prev_piece: LevelPiece, next_piece: PackedScene) -> 
 	add_child(level_piece)
 
 	return level_piece
+
+func on_piece_exited_screen(_piece: LevelPiece) -> void:
+	pieces_exited = (pieces_exited + 1) % MAX_PIECES
+
+	if pieces_exited == 2:
+		generate_level_segment(MAX_PIECES)
+		clean_up_old_pieces()
+
+func clean_up_old_pieces() -> void:
+	if level_pieces.size() > MAX_PIECES * 2:
+		var pieces_to_free: Array[LevelPiece] = level_pieces.slice(0, MAX_PIECES)
+		level_pieces = level_pieces.slice(MAX_PIECES)
+		for piece in pieces_to_free:
+			piece.queue_free()

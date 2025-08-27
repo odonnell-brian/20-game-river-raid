@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ctqh86dmvas7w" path="res://Levels/Pieces/Common/asteroid_wall_vertical.tscn" id="3_qyrti"]
 [ext_resource type="PackedScene" uid="uid://db3twsdalc7ft" path="res://Common/Components/movement/level_entity_scroll_component.tscn" id="5_qybxc"]
 
-[node name="WideToNarrow" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom", "enemy_spawns", "fuel_spawns", "bridge_spawn")]
+[node name="WideToNarrow" type="Node2D" node_paths=PackedStringArray("stitch_point_top", "stitch_point_bottom", "enemy_spawns", "fuel_spawns", "bridge_spawn", "visibility_notifier")]
 script = ExtResource("1_qyrti")
 stitch_point_top = NodePath("StitchPointTop")
 stitch_point_bottom = NodePath("StitchPointBottom")
@@ -13,6 +13,7 @@ connections = Array[int]([3, 2])
 enemy_spawns = [NodePath("EnemySpawn1"), NodePath("EnemySpawn2"), NodePath("EnemySpawn3"), NodePath("EnemySpawn4")]
 fuel_spawns = [NodePath("FuelSpawn")]
 bridge_spawn = NodePath("BridgeSpawn")
+visibility_notifier = NodePath("VisibleOnScreenNotifier")
 
 [node name="AsteroidWallLeftToRight" parent="." instance=ExtResource("2_vrx01")]
 position = Vector2(-410, 548)
@@ -36,7 +37,6 @@ position = Vector2(0, 595)
 [node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("5_qybxc")]
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, 100)
-screen_exit_behavior = 0
 
 [node name="FuelSpawn" type="Marker2D" parent="."]
 
@@ -54,3 +54,6 @@ position = Vector2(165, 470)
 
 [node name="EnemySpawn4" type="Marker2D" parent="."]
 position = Vector2(-100, 190)
+
+[node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -659)
