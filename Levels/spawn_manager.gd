@@ -15,8 +15,12 @@ const ufo_scene = preload("res://Entities/enemy_ufo/enemy_ufo.tscn")
 
 var ufo_spawn_position: Vector2
 
+func _init() -> void:
+	GlobalData.spawn_manager = self
+
 func _ready() -> void:
 	Signals.level_pieces_added.connect(spawn_entities)
+	Signals.reset_level_segment.connect(on_reset_level_segment)
 
 	# TODO: randomize spawn position
 	ufo_spawn_position = Vector2(get_viewport().size.x + 100, 200.0)
@@ -29,7 +33,9 @@ func spawn_entities(level_pieces: Array[LevelPiece]) -> void:
 		spawn_entity_at_markers(level_piece.fuel_spawns, [fuel_scene])
 		spawn_entity_at_markers(level_piece.enemy_spawns, enemy_scenes)
 
-	spawn_entity(level_pieces[level_pieces.size() - 1].bridge_spawn.global_position, bridge_scene)
+	var last_piece: LevelPiece = level_pieces[level_pieces.size() - 1]
+	spawn_entity(last_piece.bridge_spawn.global_position, bridge_scene)
+	last_piece.is_bridge_piece = true
 
 func spawn_entity_at_markers(markers: Array[Marker2D], scenes: Array[PackedScene]) -> void:
 	for marker in markers:
@@ -38,10 +44,17 @@ func spawn_entity_at_markers(markers: Array[Marker2D], scenes: Array[PackedScene
 func spawn_entity(spawn_position: Vector2, scene: PackedScene) -> void:
 	var entity = scene.instantiate() as Node2D
 	entity.global_position = spawn_position
-	add_child(entity)
+	call_deferred("add_child", entity)
 
 func spawn_ufo() -> void:
 	spawn_entity(ufo_spawn_position, ufo_scene)
+	start_ufo_timer()
 
 func start_ufo_timer() -> void:
 	ufo_timer.start(randf_range(ufo_spawn_time_range.x, ufo_spawn_time_range.y))
+
+func on_reset_level_segment() -> void:
+	for child in get_children():
+		child.call_deferred("queue_free")
+
+	pass

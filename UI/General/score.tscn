@@ -5,61 +5,66 @@
 
 [node name="Score" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_gsqpq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 236.0
-offset_bottom = 20.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -10.0
+offset_right = 118.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 2
 
 [node name="Counter" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter2" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter3" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter4" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter5" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter6" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter7" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter8" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter9" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Counter10" parent="HBoxContainer" instance=ExtResource("1_v4a34")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8

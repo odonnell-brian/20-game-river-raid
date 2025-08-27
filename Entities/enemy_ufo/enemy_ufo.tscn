@@ -76,7 +76,7 @@ shape = SubResource("CircleShape2D_33no7")
 
 [node name="ScoreComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_twn3k")]
 health_component = NodePath("../HealthComponent")
-score_amount = 50
+score_amount = 300
 
 [node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move", "visibility_notifier") instance=ExtResource("5_vh88p")]
 node_to_move = NodePath("..")

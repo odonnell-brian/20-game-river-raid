@@ -3,7 +3,6 @@ extends Control
 @export var lives_images: Array[TextureRect]
 
 @onready var fuel_progress_bar: ProgressBar = $PanelContainer/HBoxContainer/VBoxContainer/Fuel
-@onready var score_value_label: Label = $PanelContainer/HBoxContainer/VBoxContainer/Score/Value
 @onready var score_controller: ScoreController = $PanelContainer/HBoxContainer/VBoxContainer/Score/Score
 @onready var lives_counter: Counter = $PanelContainer/HBoxContainer/Lives/Counter
 
@@ -25,4 +24,3 @@ func on_player_fuel_changed(fuel_percent: float) -> void:
 
 func on_score_changed(current_score: int) -> void:
 	score_controller.update_score(current_score)
-	score_value_label.text = str(current_score)

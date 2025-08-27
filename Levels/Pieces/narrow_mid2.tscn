@@ -15,35 +15,36 @@ bridge_spawn = NodePath("BridgeSpawn")
 visibility_notifier = NodePath("VisibleOnScreenNotifier")
 
 [node name="AsteroidWallVertical" parent="." instance=ExtResource("1_2mtpx")]
-position = Vector2(-312, -194)
+position = Vector2(-312, -454)
 
 [node name="AsteroidWallVertical2" parent="." instance=ExtResource("1_2mtpx")]
-position = Vector2(312, -194)
+position = Vector2(312, -454)
 
 [node name="StitchPointTop" type="Marker2D" parent="."]
-position = Vector2(0, -618)
+position = Vector2(0, -878)
 
 [node name="StitchPointBottom" type="Marker2D" parent="."]
-position = Vector2(0, 311)
+position = Vector2(0, 51)
 
 [node name="LevelEntityScrollComponent" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("2_dwc7f")]
+position = Vector2(0, -260)
 node_to_move = NodePath("..")
 scroll_velocity = Vector2(0, 100)
 
 [node name="FuelSpawn" type="Marker2D" parent="."]
-position = Vector2(0, -443)
+position = Vector2(0, -703)
 
 [node name="EnemySpawn1" type="Marker2D" parent="."]
-position = Vector2(217, -58)
+position = Vector2(217, -318)
 
 [node name="EnemySpawn2" type="Marker2D" parent="."]
-position = Vector2(-201, -272)
+position = Vector2(-201, -532)
 
 [node name="EnemySpawn3" type="Marker2D" parent="."]
-position = Vector2(-201, 153)
+position = Vector2(-201, -107)
 
 [node name="BridgeSpawn" type="Marker2D" parent="."]
-position = Vector2(0, -171)
+position = Vector2(0, -431)
 
 [node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, -666)
+position = Vector2(0, -926)

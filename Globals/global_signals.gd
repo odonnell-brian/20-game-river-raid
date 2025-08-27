@@ -20,6 +20,12 @@ signal player_health_changed(current_health: int)
 signal player_destroyed()
 
 @warning_ignore("unused_signal")
+signal game_over(score: int)
+
+@warning_ignore("unused_signal")
+signal restart_game()
+
+@warning_ignore("unused_signal")
 signal bridge_destroyed()
 
 @warning_ignore("unused_signal")
@@ -30,6 +36,9 @@ signal score_earned(amount: int)
 
 @warning_ignore("unused_signal")
 signal score_changed(current_score: float)
+
+@warning_ignore("unused_signal")
+signal reset_level_segment()
 
 @warning_ignore("unused_signal")
 signal level_pieces_added(level_pieces: Array[LevelPiece])
