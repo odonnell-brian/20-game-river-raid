@@ -10,7 +10,11 @@ extends CharacterBody2D
 
 @onready var hit_animation_player: AnimationPlayer = $HitAnimations
 
+var starting_position: Vector2
+
 func _ready() -> void:
+	starting_position = global_position
+
 	health_component.health_changed.connect(on_health_changed)
 	health_component.health_depleted.connect(on_health_depleted)
 	fuel_component.fuel_changed.connect(Signals.player_fuel_changed.emit)
@@ -30,6 +34,7 @@ func _physics_process(delta: float) -> void:
 
 func on_health_changed(current_health: int) -> void:
 	hit_animation_player.play("blink")
+	global_position = starting_position
 	Signals.player_health_changed.emit(current_health)
 
 func on_health_depleted() -> void:
